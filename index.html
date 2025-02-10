@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Comunitária</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .book-list {
+            list-style: none;
+            padding: 0;
+        }
+        .book-list li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .book-list li span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Biblioteca Comunitária</h1>
+
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Buscar por título ou autor...">
+        <button onclick="searchBooks()">Buscar</button>
+    </div>
+
+    <ul class="book-list" id="book-list">
+        <li><span>O Hobbit</span> - J.R.R. Tolkien</li>
+        <li><span>1984</span> - George Orwell</li>
+        <li><span>A Revolução dos Bichos</span> - George Orwell</li>
+        <li><span>Dom Casmurro</span> - Machado de Assis</li>
+        <li><span>O Grande Gatsby</span> - F. Scott Fitzgerald</li>
+    </ul>
+</div>
+
+<script>
+    function searchBooks() {
+        const query = document.getElementById('search').value.toLowerCase();
+        const books = document.querySelectorAll('.book-list li');
+        books.forEach(book => {
+            const bookText = book.textContent.toLowerCase();
+            if (bookText.includes(query)) {
+                book.style.display = 'block';
+            } else {
+                book.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
